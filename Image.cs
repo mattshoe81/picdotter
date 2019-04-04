@@ -20,6 +20,7 @@ namespace PicDotter
         {
             Bitmap original = new Bitmap(filePath);
             this.Bitmap = this.ToGrayscale(original);
+            this.Bitmap.Save(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "grayscaled.jpg"));
             int index = filePath.LastIndexOf('\\') + 1;
             if (index < 0)
                 index = filePath.LastIndexOf('/') + 1;
@@ -47,34 +48,6 @@ namespace PicDotter
 
         private Bitmap ToGrayscale(Bitmap original)
         {
-            //var result = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format8bppIndexed);
-
-            //BitmapData data = result.LockBits(new Rectangle(0, 0, result.Width, result.Height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
-
-            //// Copy the bytes from the image into a byte array
-            //byte[] bytes = new byte[data.Height * data.Stride];
-            //List<short> pixelValues = new List<short>();
-            //Marshal.Copy(data.Scan0, bytes, 0, bytes.Length);
-
-            //for (int y = 0; y < bmp.Height; y++)
-            //{
-            //    for (int x = 0; x < bmp.Width; x++)
-            //    {
-            //        var c = bmp.GetPixel(x, y);
-            //        var rgb = (byte)((c.R + c.G + c.B) / 3);
-            //        pixelValues.Add((short)((c.R + c.G + c.B) / 3));
-
-            //        bytes[x * data.Stride + y] = rgb;
-            //    }
-            //}
-            //this.Average = (short)pixelValues.Average(x => x);
-
-            //// Copy the bytes from the byte array into the image
-            //Marshal.Copy(bytes, 0, data.Scan0, bytes.Length);
-
-            //result.UnlockBits(data);
-
-
             //create a blank bitmap the same size as original
             Bitmap newBitmap = new Bitmap(original.Width, original.Height);
 
